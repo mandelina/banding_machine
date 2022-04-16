@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css2?family=Arvo&family=Dancing+Script&family=Gaegu&display=swap");
+
+body {
+  margin: 0;
+  background: #eae8fe;
+}
+button {
+  border: 0;
+}
+
+/* .screen {
+  width: 1920px;
+  height: 963px;
+  background: #eae8fe;
+} */
+.logo {
+  display: block;
+  margin: 0 auto 43px;
+}
+.wrapper {
+  box-sizing: border-box;
+  position: absolute;
+  margin-top: 247px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* margin: 0 586px 154px 586px; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.blind {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+}
+/* --------왼쪽머신 start-------------- */
+.machine {
+  grid-column: 1/2;
+  width: 360px;
+  height: 545px;
+  background: #ffffff;
+}
+
+.Cola_division {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 2fr);
+  margin: 0 25px;
+}
+
+.Cola {
+  width: 94px;
+  height: 130px;
+  margin-bottom: 12px;
+  background-color: #ffffff;
+  border: 2px solid #bdbdbd;
+  border-radius: 10px;
+  text-align: center;
+  justify-content: center;
+}
+
+.Cola .cola_img {
+  margin: 11px 29px 0px;
+}
+.Cola .cola_img .vio {
+  height: 65px;
+  width: 36px;
+}
+
+.origin,
+.violet,
+.yellow {
+  margin-top: 31px;
+}
+
+.violet,
+.yellow,
+.green,
+.orange {
+  margin-left: 8px;
+}
+
+.name {
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 13px;
+  margin-bottom: 7px;
+}
+.price_cola {
+  padding: 5px 16px 5px 15px;
+  margin: 7px 11px 9px 13px;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 100%;
+  text-align: center;
+  color: #ffffff;
+  background: #6327fe;
+  border-radius: 50px;
+}
+
+.calc {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 44px);
+  margin: -11px 25px 0 25px;
+}
+
+.balance {
+  display: inline-block;
+  padding: 6px 10px 7px;
+  margin-right: 12px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 200px;
+  height: 33px;
+  background: #eae8fe;
+  grid-column: 1/3;
+  grid-row: 1/2;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.balance_price {
+  display: inline-block;
+  float: right;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+.return_btn {
+  grid-column: 3/4;
+  grid-row: 1/2;
+  width: 94px;
+  height: 33px;
+  padding: 6px 9px 8px 10px;
+  margin-bottom: 11px;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 19px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+.deposit {
+  grid-column: 1/3;
+  grid-row: 2/3;
+  width: 200px;
+  height: 33px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #bdbdbd;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 19px;
+  color: #bdbdbd;
+}
+.deposit_btn {
+  grid-column: 3/4;
+  grid-row: 2/3;
+  width: 94px;
+  height: 32px;
+  padding: 6px 34px 7px 34px;
+  background: #ffffff;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  font-family: "Noto Sans KR";
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.machine .list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 53px);
+}
+/* .machine .list .deco {
+  grid-column: 1/3;
+  grid-row: 1/3;
+  float: right;
+  width: 4px;
+  height: 79px;
+  background: #ff0000;
+  border-radius: 50px;
+} */
+
+.order_now {
+  grid-column: 1/3;
+  grid-row: 1/3;
+  box-sizing: border-box;
+  width: 200px;
+  margin-left: 25px;
+  background: #eae8fe;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+}
+.acheive_btn {
+  grid-column: 3/4;
+  grid-row: 1/3;
+  box-sizing: border-box;
+  width: 94px;
+  height: 100%;
+  margin: 0px 27px 28px -3px;
+  background: #6327fe;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 19px;
+  color: #ffffff;
+}
+
+/* --------왼쪽머신  end-------------- */
+
+.order {
+  width: 360px;
+  grid-column: 2/3;
+}
+.price {
+  width: 360px;
+  height: 50px;
+  background: rgb(255, 170, 11);
+  margin-bottom: 20px;
+}
+
+.order-list {
+  width: 360px;
+  height: 474px;
+  background: rgb(255, 255, 0);
+}
