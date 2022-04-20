@@ -1,4 +1,4 @@
-## banding_machine 
+## Vending Machine Form
 
 #### URL : https://mandelina.github.io/vending_machine/vending_Machine/vending_machine.html
 
