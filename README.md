@@ -1,6 +1,6 @@
 ## banding_machine 
 
-#### URL : https://mandelina.github.io/vending_machine/vending_machine.html
+#### URL : https://mandelina.github.io/vending_machine/vending_Machine/vending_machine.html**
 
 #### [PRIVIEW]
 
