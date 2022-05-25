@@ -80,10 +80,55 @@ const item_staged_after = document.querySelector(
 const elLiAfter = document.querySelectorAll(".list .list_item_staged li");
 
 getBtn.addEventListener("click", (e) => {
+  const elLi = document.createElement("li");
+
+  const btn = document.createElement("button");
+  btn.classList.add("btn_staged");
+
+  const img = document.createElement("img");
+  img.setAttribute("src", "");
+
+  const strongTxt = document.createElement("strong");
+  strongTxt.classList.add("txt_item");
+
+  const spanNum = document.createElement("span");
+  spanNum.classList.add("item_num");
+
   for (i = 5; i < item_staged_before.childNodes.length; i++) {
     console.log(item_staged_before.childNodes[i]);
-    item_staged_after.innerHTML = ` `;
+    str += item_staged_before.childNodes[i];
   }
 });
 
+// ------------------------------------------
+// for (i = 5; i < item_staged_before.childNodes.length; i++) {
+//   console.log(item_staged_before.childNodes[i]);
+//   item_staged_after.innerHTML = ` `;
+// }
+
+// 입금액 입력시 소지금에 뿌리기
+// ------------------------------------------
+
+const inputDepo = document.querySelector(".deposit");
+const DepoBtn = document.querySelector(".deposit_btn");
+const priceNow = document.querySelector(".possession_price_now");
+
+DepoBtn.addEventListener("click", (e) => {
+  let price = inputDepo.value;
+  if (price <= 0) {
+    alert("금액이 0원 이하입니다. 다시 입력해주세요");
+  }
+  // if(price ==)
+
+  priceNow.textContent = Number(price).toLocaleString("ko-KR") + "원";
+});
+
+// 숫자 길이 제한함수
+function maxLengthCheck(object) {
+  if (object.value.length > object.maxLength) {
+    object.value = object.value.slice(0, object.maxLength);
+  }
+}
+
+// 입금액 입력시 소지금에 뿌리기
 // ------------------------------------------
