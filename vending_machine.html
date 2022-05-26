@@ -71,7 +71,14 @@
             <span class="txt_balance">1,000원</span>
           </div>
           <button class="return_btn">거스름돈 반환</button>
-          <input placeholder="입금액 입력" type="number" class="deposit" />
+          <input
+            placeholder="입금액 입력"
+            type="number"
+            max="9999"
+            maxlength="5"
+            oninput="maxLengthCheck(this)"
+            class="deposit"
+          />
           <button type="button" class="deposit_btn">입금</button>
         </section>
 
@@ -102,7 +109,7 @@
         <div class="price">
           <div class="price_box">
             <p class="possession_price">소지금:</p>
-            <p class="possession_price_now">25,000원</p>
+            <p class="possession_price_now"></p>
           </div>
         </div>
         <div class="my_order_list">
