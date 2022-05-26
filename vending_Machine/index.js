@@ -80,24 +80,57 @@ const item_staged_after = document.querySelector(
 const elLiAfter = document.querySelectorAll(".list .list_item_staged li");
 
 getBtn.addEventListener("click", (e) => {
-  const elLi = document.createElement("li");
+  item_staged_after.innerHTML = null;
 
-  const btn = document.createElement("button");
-  btn.classList.add("btn_staged");
+  for (i = 0; i < item_staged_before.children.length; i++) {
+    console.log(item_staged_before.children[i]);
 
-  const img = document.createElement("img");
-  img.setAttribute("src", "");
+    // li만들기
+    const elLi = document.createElement("li");
 
-  const strongTxt = document.createElement("strong");
-  strongTxt.classList.add("txt_item");
+    //button만들기
+    const btn = document.createElement("button");
+    btn.classList.add("btn_staged");
 
-  const spanNum = document.createElement("span");
-  spanNum.classList.add("item_num");
+    //button하위요소 3개
 
-  for (i = 5; i < item_staged_before.childNodes.length; i++) {
-    console.log(item_staged_before.childNodes[i]);
-    str += item_staged_before.childNodes[i];
+    //이미지
+    const img = document.createElement("img");
+    img.classList.add("mini");
+    //이미지 url가져오기
+    const imgURL =
+      item_staged_before.children[i].children[0].children[0].getAttribute(
+        "src"
+      );
+    img.setAttribute("src", imgURL);
+
+    //콜라명
+    const strongTxt = document.createElement("strong");
+    // 콜라명 가져오기
+    const colaName =
+      item_staged_before.children[i].children[0].children[1].textContent;
+
+    strongTxt.classList.add("txt_item");
+    strongTxt.textContent = colaName;
+    //콜라갯수
+    const spanNum = document.createElement("span");
+    const colaNum =
+      item_staged_before.children[i].children[0].children[2].textContent;
+    spanNum.classList.add("item_num");
+    spanNum.textContent = colaNum;
+
+    //버튼하위요소 3개
+    btn.appendChild(img);
+    btn.appendChild(strongTxt);
+    btn.appendChild(spanNum);
+
+    //li하위에 버튼추가
+    elLi.appendChild(btn);
+
+    //li를 ul에 추가
+    item_staged_after.appendChild(elLi);
   }
+  // item_staged_before.innerHTML = null;
 });
 
 // ------------------------------------------
@@ -130,5 +163,25 @@ function maxLengthCheck(object) {
   }
 }
 
-// 입금액 입력시 소지금에 뿌리기
 // ------------------------------------------
+
+//거스름돈 반환 함수
+const returnBtn = document.querySelector(".return_btn");
+returnBtn.addEventListener("click", (e) => {
+  const deposit = priceNow.textContent;
+
+  console.log();
+  const price = 1000;
+
+  console.log();
+  console.log(price);
+
+  if (price === "0원") {
+    //입금한 금액이 0원이면
+    alert("먼저 돈을 입금하세요!");
+  } else if (parseInt(deposit.replace(",", "")) < price) {
+    alert("돈이 부족합니다");
+  } else {
+    alert("곧 계산해드려요^^");
+  }
+});
