@@ -79,8 +79,11 @@ const item_staged_after = document.querySelector(
 
 const elLiAfter = document.querySelectorAll(".list .list_item_staged li");
 
+const totalPrice = document.querySelector(".total_price");
+
 getBtn.addEventListener("click", (e) => {
   item_staged_after.innerHTML = null;
+  let totalColaNum = 0; // 총 콜라갯수 (금액계산을 위한)
 
   for (i = 0; i < item_staged_before.children.length; i++) {
     console.log(item_staged_before.children[i]);
@@ -119,6 +122,8 @@ getBtn.addEventListener("click", (e) => {
     spanNum.classList.add("item_num");
     spanNum.textContent = colaNum;
 
+    totalColaNum += Number(colaNum);
+
     //버튼하위요소 3개
     btn.appendChild(img);
     btn.appendChild(strongTxt);
@@ -130,14 +135,10 @@ getBtn.addEventListener("click", (e) => {
     //li를 ul에 추가
     item_staged_after.appendChild(elLi);
   }
-  // item_staged_before.innerHTML = null;
-});
 
-// ------------------------------------------
-// for (i = 5; i < item_staged_before.childNodes.length; i++) {
-//   console.log(item_staged_before.childNodes[i]);
-//   item_staged_after.innerHTML = ` `;
-// }
+  totalPrice.textContent =
+    "총금액 : " + (totalColaNum * 1000).toLocaleString("ko-KR") + "원";
+});
 
 // 입금액 입력시 소지금에 뿌리기
 // ------------------------------------------
@@ -148,12 +149,16 @@ const priceNow = document.querySelector(".possession_price_now");
 
 DepoBtn.addEventListener("click", (e) => {
   let price = inputDepo.value;
+  let price_now = parseInt(priceNow.textContent.replace(",", ""));
   if (price <= 0) {
     alert("금액이 0원 이하입니다. 다시 입력해주세요");
   }
-  // if(price ==)
+  inputDepo.value = ""; // 임금액 입력후 초기화
 
-  priceNow.textContent = Number(price).toLocaleString("ko-KR") + "원";
+  console.log(Number(price));
+  console.log(price_now);
+  priceNow.textContent =
+    (Number(price) + price_now).toLocaleString("ko-KR") + "원";
 });
 
 // 숫자 길이 제한함수
@@ -165,23 +170,27 @@ function maxLengthCheck(object) {
 
 // ------------------------------------------
 
+let regex = /[^0-9]/g;
 //거스름돈 반환 함수
 const returnBtn = document.querySelector(".return_btn");
+const balance = document.querySelector(".txt_balance");
+
 returnBtn.addEventListener("click", (e) => {
   const deposit = priceNow.textContent;
+  const total = totalPrice.textContent.replace(regex, "");
+  const depoPrice = parseInt(deposit.replace(",", ""));
 
-  console.log();
-  const price = 1000;
-
-  console.log();
-  console.log(price);
-
-  if (price === "0원") {
-    //입금한 금액이 0원이면
+  if (depoPrice === "0원") {
     alert("먼저 돈을 입금하세요!");
-  } else if (parseInt(deposit.replace(",", "")) < price) {
+  } else if (depoPrice < total) {
     alert("돈이 부족합니다");
+  }
+  //획득버튼을 누르지 않아 총 금액을 모를경우
+  else if (total === "") {
+    alert("먼저 획득버튼을 눌러주세요!");
   } else {
-    alert("곧 계산해드려요^^");
+    let balCalc = depoPrice - total;
+    balance.textContent = balCalc.toLocaleString("ko-KR") + "원";
+    alert("맛있게 드세요^^");
   }
 });
