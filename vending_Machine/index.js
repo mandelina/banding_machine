@@ -21,10 +21,6 @@ function clickHandler(e) {
   const name = elem.children[1].textContent; // 콜라명
   const btn = document.querySelectorAll(".list .list_item_staged button"); // 구매목록에 있는 콜라 목록
 
-  console.log(src);
-  console.log(name);
-  console.log(btn.length);
-
   // 획득 목록에 아무 콜라도 없을 경우
   if (btn.length == 0) {
     console.log("아무것도 없음");
@@ -41,8 +37,8 @@ function clickHandler(e) {
   // 획득 목록에 콜라가 있을 경우
   for (i = 0; i < btn.length; i++) {
     //같은 콜라를 선택했다면 수량만 증가
+
     if (btn[i].children[1].textContent == name) {
-      console.log("있음");
       btn[i].children[2].textContent =
         Number(btn[i].children[2].textContent) + 1;
       break;
@@ -50,16 +46,56 @@ function clickHandler(e) {
 
     //마지막까지 돌았는데도 없으면 새로운 콜라 목록 추가
     else if (i == btn.length - 1) {
-      console.log("없음");
       //  box에 클릭한 콜라 li추가
-      elLi.innerHTML = `
-      <button type="button" class="btn_staged purchase">
-      <img class="mini" src=${src} alt="" />
-      <strong class="txt_item">${name}</strong>
-      <span class="item_num">1</span>
-    </button>
-          `;
+      console.log("src,name");
+      console.log(src);
+      console.log(name);
+
+      // innerHTMl 으로 만든거
+
+      //   elLi.innerHTML = `
+      //   <button type="button" class="btn_staged purchase">
+      //   <img class="mini" src=${src} alt="" />
+      //   <strong class="txt_item">${name}</strong>
+      //   <span class="item_num">1</span>
+      // </button>
+      //       `;
       //  박스를 부모로 연결하기
+      // item_staged_before.appendChild(elLi);
+
+      //=-------------------------------------------------------------
+
+      //li만들기
+      const elLi = document.createElement("li");
+
+      //button만들기
+      const colaBtn = document.createElement("button");
+      colaBtn.classList.add("btn_staged");
+
+      //button하위요소 3개
+      //이미지
+      const colaImg = document.createElement("img");
+      colaImg.classList.add("mini");
+      colaImg.setAttribute("src", src);
+
+      //콜라명
+      const strongTxt = document.createElement("strong");
+      // 콜라명 가져오기
+      strongTxt.classList.add("txt_item");
+      strongTxt.textContent = name;
+
+      //콜라갯수
+      const spanNum = document.createElement("span");
+      spanNum.textContent = "1";
+      spanNum.classList.add("item_num");
+      //버튼하위요소 3개
+      colaBtn.appendChild(colaImg);
+      colaBtn.appendChild(strongTxt);
+      colaBtn.appendChild(spanNum);
+
+      //li하위에 버튼추가
+      elLi.appendChild(colaBtn);
+
       item_staged_before.appendChild(elLi);
     }
   }
