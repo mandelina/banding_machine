@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Arvo&family=Dancing+Script&family=Gaegu&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap");
 body {
   background: #eae8fe;
 }
@@ -173,7 +172,7 @@ button {
 
 .txt_balance {
   float: right;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -280,7 +279,7 @@ button {
   height: 30px;
   border: 1px solid #bdbdbd;
   border-radius: 5px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
 }
 
@@ -342,7 +341,7 @@ button {
 .my_order_list .total_price {
   float: right;
   margin-top: 10px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 12px;
 }
 
