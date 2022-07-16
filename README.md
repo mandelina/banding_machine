@@ -1,8 +1,12 @@
-## Vending Machine Form
+# 콜라 자판기
 
 #### URL : https://mandelina.github.io/vending_machine/vending_Machine/vending_machine.html
 
 #### [PRIVIEW]
+![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/83548784/179344801-0541addd-a3bf-426c-b1ee-fbd3f9de081a.gif)
+
+![ezgif com-gif-maker (4)](https://user-images.githubusercontent.com/83548784/179344898-6bee8511-da57-497f-8b0c-f9188cbb045e.gif)
+
 
 ## 💻 사용한 스택
 - HTML , CSS
