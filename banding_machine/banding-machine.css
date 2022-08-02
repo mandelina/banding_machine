@@ -1,0 +1,413 @@
+@import url("https://fonts.googleapis.com/css2?family=Arvo&family=Dancing+Script&family=Gaegu&display=swap");
+
+body {
+  margin: 0;
+  background: #eae8fe;
+}
+button {
+  border: 0;
+}
+
+/* .screen {
+  width: 1920px;
+  height: 963px;
+  background: #eae8fe;
+} */
+.logo {
+  display: block;
+  margin: 0 auto 43px;
+}
+.wrapper {
+  box-sizing: border-box;
+  position: absolute;
+  margin-top: 247px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* margin: 0 586px 154px 586px; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.blind {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+}
+
+/* --------왼쪽머신 start-------------- */
+
+.machine {
+  grid-column: 1/2;
+  width: 360px;
+  height: 545px;
+  background: #ffffff;
+}
+
+.Cola_division {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 2fr);
+  margin: 0 25px;
+}
+
+.Cola_division .Cola.violet {
+  background-image: url("./images/품절표시.png");
+}
+
+/* 가상요소로 품절표기 수정해보기 */
+.Cola_division .Cola.violet::after {
+  position: relative;
+  background-image: url("./images/품절표시.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.Cola_division .Cola.origin,
+.Cola_division .Cola.green {
+  border: 3px solid #6327fe;
+  border-radius: 10px;
+}
+
+.Cola {
+  width: 94px;
+  height: 130px;
+  margin-bottom: 12px;
+  background-color: #ffffff;
+  border: 2px solid #bdbdbd;
+  border-radius: 10px;
+  text-align: center;
+  justify-content: center;
+}
+
+.Cola .cola_img {
+  margin: 11px 29px 0px;
+}
+.Cola .cola_img .vio {
+  height: 65px;
+  width: 36px;
+}
+
+.origin,
+.violet,
+.yellow {
+  margin-top: 31px;
+}
+
+.violet,
+.yellow,
+.green,
+.orange {
+  margin-left: 8px;
+}
+
+.name {
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 13px;
+  margin-bottom: 7px;
+}
+.price_cola {
+  padding: 5px 16px 5px 15px;
+  margin: 0px 11px 9px 13px;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 100%;
+  text-align: center;
+  color: #ffffff;
+  background: #6327fe;
+  border-radius: 50px;
+}
+
+.calc {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 44px);
+  margin: -11px 25px 0 25px;
+}
+
+.balance {
+  display: inline-block;
+  padding: 6px 10px 7px;
+  margin-right: 12px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 200px;
+  height: 33px;
+  background: #eae8fe;
+  grid-column: 1/3;
+  grid-row: 1/2;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.balance_price {
+  display: inline-block;
+  float: right;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+.return_btn {
+  grid-column: 3/4;
+  grid-row: 1/2;
+  width: 94px;
+  height: 33px;
+  padding: 6px 9px 8px 10px;
+  margin-bottom: 11px;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 19px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+.deposit {
+  grid-column: 1/3;
+  grid-row: 2/3;
+  width: 200px;
+  height: 33px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #bdbdbd;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 19px;
+  color: #bdbdbd;
+}
+.deposit_btn {
+  grid-column: 3/4;
+  grid-row: 2/3;
+  width: 94px;
+  height: 32px;
+  padding: 6px 34px 7px 34px;
+  background: #ffffff;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  font-family: "Noto Sans KR";
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.machine .list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 53px);
+}
+/* .machine .list .deco {
+  grid-column: 1/3;
+  grid-row: 1/3;
+  float: right;
+  width: 4px;
+  height: 79px;
+  background: #ff0000;
+  border-radius: 50px;
+} */
+
+.order_now {
+  grid-column: 1/3;
+  grid-row: 1/3;
+  box-sizing: border-box;
+  width: 200px;
+  margin-left: 25px;
+  background: #eae8fe;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+}
+.acheive_btn {
+  grid-column: 3/4;
+  grid-row: 1/3;
+  box-sizing: border-box;
+  width: 94px;
+  height: 100%;
+  margin: 0px 27px 28px -3px;
+  background: #6327fe;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 19px;
+  color: #ffffff;
+}
+/* 흰색박스 */
+.list .order_now .od {
+  background-color: #ffffff;
+  width: 170px;
+  border-radius: 5px;
+  margin: 0 18px 0 12px;
+}
+
+.list .order_now .od.one {
+  margin: 12px 18px 6px 12px;
+}
+
+/* 리스트 처리방법 찾은 후 수정해야함 */
+.list .order_now .od.two {
+  border-end-end-radius: 0px;
+  border-end-start-radius: 0px;
+  height: 38px;
+}
+
+.list .order_now .od img {
+  margin: 6px 0 7px 10px;
+}
+
+.list .order_now .od p {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 46px;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  margin-left: 5px;
+}
+
+.list .order_now .od .box {
+  display: inline-block;
+  float: right;
+  padding: 3px 10px 5px 10px;
+  margin: 8px 8px 8px auto;
+  vertical-align: top;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* --------왼쪽머신  end-------------- */
+
+.order {
+  width: 360px;
+  grid-column: 2/3;
+  margin-left: 28px;
+}
+.price {
+  box-sizing: border-box;
+  padding: 9px 27px;
+  width: 360px;
+  height: 50px;
+  background: #ffffff;
+  margin-bottom: 20px;
+}
+.price .price_box {
+  padding: 6px 10px;
+  border-radius: 5px;
+  background-color: #eae8fe;
+}
+.price .price_box .possession_price {
+  display: inline-block;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+.price .price_box .possession_price_now {
+  display: inline-block;
+  float: right;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.order-list {
+  box-sizing: border-box;
+  width: 360px;
+  height: 474px;
+  padding: 25px 27px 52px 27px;
+  background: #ffffff;
+}
+
+.order-list .get_coke {
+  text-align: center;
+  margin-bottom: 13px;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+}
+.order-list .get_box {
+  box-sizing: border-box;
+  padding: 12px 18px 0 12px;
+  border-radius: 5px;
+  border: 1px solid #bdbdbd;
+  width: 306px;
+  height: 364px;
+  background-color: #eae8fe;
+}
+
+.order-list .total_price {
+  float: right;
+  margin-top: 6px;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.get_box .od {
+  background-color: #ffffff;
+  box-sizing: border-box;
+  width: 276px;
+  height: 46px;
+  border-radius: 5px;
+  margin-bottom: 6px;
+}
+
+.get_box .od img {
+  margin: 6px 0 7px 10px;
+}
+
+.get_box .od p {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 46px;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+}
+
+.get_box .od .box {
+  display: inline-block;
+  float: right;
+  padding: 3px 10px 5px 10px;
+  margin: 8px 8px 8px auto;
+  vertical-align: top;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
