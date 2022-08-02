@@ -1,105 +1,79 @@
-const coList = document.querySelector(".Cola_list");
-
-const btn_item = document.querySelectorAll(".Cola_list .btn_item");
-
-const item_staged_before = document.querySelector(".list .list_item_staged");
+const coList = document.querySelector(".Cola_list");  //콜라 자판기
+const btn_item = document.querySelectorAll(".Cola_list .btn_item"); // 자판기 콜라 버튼
+const item_staged_before = document.querySelector(".list .list_item_staged"); //
 
 // 콜라 버튼 이벤트 처리 함수
 function clickHandler(e) {
   const elLi = document.createElement("li");
-  let elem = e.target;
-  while (!elem.classList.contains("btn_item")) {
-    elem = elem.parentNode;
-    if (elem.nodeName == "BODY") {
-      elem = null;
+ 
+  // 이벤트 위임 처리
+  let colaBtn = e.target;
+  while (!colaBtn.classList.contains("btn_item")) {
+    colaBtn = colaBtn.parentNode;
+    if (colaBtn.nodeName == "BODY") {
+      colaBtn = null;
       return;
     }
   }
+  // e.target : coList중 내가 클릭한 애 출력 , currentTarget은 ul이 찍힘
 
-  console.log(e.target); //coList중 내가 클릭한 애 출력 , currentTarget은 ul이 찍힘
-  const src = elem.children[0].getAttribute("src"); //이미지
-  const name = elem.children[1].textContent; // 콜라명
+//------------------------------------------------------------------
+  // 콜라 버튼의 이미지경로,이름,
+  const colaImg = colaBtn.querySelector("img");
+  const src = colaImg.getAttribute("src");
+  const colaName = colaBtn.querySelector("strong");
   const btn = document.querySelectorAll(".list .list_item_staged button"); // 구매목록에 있는 콜라 목록
+
+//------------------------------------------------------------------
+  const listBtn = document.createElement('button');
+  listBtn.classList.add('btn_staged');
+  listBtn.setAttribute("type", "button");
+  const listImg = document.createElement('img');
+  listImg.classList.add('mini')
+  const listText = document.createElement('strong');
+  listText.classList.add('txt_item')
+  const listNum = document.createElement('span'); 
+  listNum.classList.add('item_num')
+  
+//------------------------------------------------------------------
 
   // 획득 목록에 아무 콜라도 없을 경우
   if (btn.length == 0) {
-    console.log("아무것도 없음");
-    elLi.innerHTML = `
-    <button type="button" class="btn_staged purchase">
-    <img class="mini" src=${src} alt="" />
-    <strong class="txt_item">${name}</strong>
-    <span class="item_num">1</span>
-  </button>
-        `;
+    listImg.setAttribute("src", src);
+    listImg.setAttribute("alt",colaName.textContent+" 이미지");
+    listText.textContent = colaName.textContent
+    listNum.textContent = 1 ; 
+    listBtn.append(listImg);
+    listBtn.append(listText);
+    listBtn.append(listNum);
+    elLi.appendChild(listBtn);
     item_staged_before.appendChild(elLi);
   }
 
-  // 획득 목록에 콜라가 있을 경우
-  for (i = 0; i < btn.length; i++) {
-    //같은 콜라를 선택했다면 수량만 증가
-
-    if (btn[i].children[1].textContent == name) {
-      btn[i].children[2].textContent =
-        Number(btn[i].children[2].textContent) + 1;
-      break;
-    }
-
-    //마지막까지 돌았는데도 없으면 새로운 콜라 목록 추가
-    else if (i == btn.length - 1) {
-      //  box에 클릭한 콜라 li추가
-      console.log("src,name");
-      console.log(src);
-      console.log(name);
-
-      // innerHTMl 으로 만든거
-
-      //   elLi.innerHTML = `
-      //   <button type="button" class="btn_staged purchase">
-      //   <img class="mini" src=${src} alt="" />
-      //   <strong class="txt_item">${name}</strong>
-      //   <span class="item_num">1</span>
-      // </button>
-      //       `;
-      //  박스를 부모로 연결하기
-      // item_staged_before.appendChild(elLi);
-
-      //=-------------------------------------------------------------
-
-      //li만들기
-      const elLi = document.createElement("li");
-
-      //button만들기
-      const colaBtn = document.createElement("button");
-      colaBtn.classList.add("btn_staged");
-
-      //button하위요소 3개
-      //이미지
-      const colaImg = document.createElement("img");
-      colaImg.classList.add("mini");
-      colaImg.setAttribute("src", src);
-
-      //콜라명
-      const strongTxt = document.createElement("strong");
-      // 콜라명 가져오기
-      strongTxt.classList.add("txt_item");
-      strongTxt.textContent = name;
-
-      //콜라갯수
-      const spanNum = document.createElement("span");
-      spanNum.textContent = "1";
-      spanNum.classList.add("item_num");
-      //버튼하위요소 3개
-      colaBtn.appendChild(colaImg);
-      colaBtn.appendChild(strongTxt);
-      colaBtn.appendChild(spanNum);
-
-      //li하위에 버튼추가
-      elLi.appendChild(colaBtn);
-
-      item_staged_before.appendChild(elLi);
+  else{
+      // 획득 목록에 콜라가 있을 경우
+      //같은 콜라를 선택했다면 수량만 증가
+      for (i = 0; i < btn.length; i++) {       
+        if (btn[i].children[1].textContent == colaName.textContent) {
+          btn[i].children[2].textContent =
+            Number(btn[i].children[2].textContent) + 1;
+          break;
+        }
+      //마지막까지 비교했을때 없으면 새로운 콜라 목록 추가
+        else if (i == btn.length - 1) {
+          listImg.setAttribute("src", src);
+          listImg.setAttribute("alt",colaName.textContent+" 이미지");
+          listText.textContent = colaName.textContent
+          listNum.textContent = 1 ; 
+          listBtn.append(listImg);
+          listBtn.append(listText);
+          listBtn.append(listNum);
+          elLi.appendChild(listBtn);
+          item_staged_before.appendChild(elLi);
+        }
+      }
     }
   }
-}
 
 coList.addEventListener("click", clickHandler);
 
@@ -108,13 +82,8 @@ coList.addEventListener("click", clickHandler);
 // 획득 btn 이벤트 처리
 const getBtn = document.querySelector(".btn_get");
 
-//ul
-const item_staged_after = document.querySelector(
-  ".my_order_list .list_item_staged"
-);
-
+const item_staged_after = document.querySelector(".my_order_list .list_item_staged");
 const elLiAfter = document.querySelectorAll(".list .list_item_staged li");
-
 const totalPrice = document.querySelector(".total_price");
 
 getBtn.addEventListener("click", (e) => {
@@ -122,11 +91,9 @@ getBtn.addEventListener("click", (e) => {
   let totalColaNum = 0; // 총 콜라갯수 (금액계산을 위한)
 
   for (i = 0; i < item_staged_before.children.length; i++) {
-    console.log(item_staged_before.children[i]);
 
     // li만들기
     const elLi = document.createElement("li");
-
     //button만들기
     const btn = document.createElement("button");
     btn.classList.add("btn_staged");
@@ -143,18 +110,15 @@ getBtn.addEventListener("click", (e) => {
       );
     img.setAttribute("src", imgURL);
 
-    //콜라명
     const strongTxt = document.createElement("strong");
     // 콜라명 가져오기
-    const colaName =
-      item_staged_before.children[i].children[0].children[1].textContent;
+    const colaName = item_staged_before.children[i].children[0].children[1].textContent;
 
     strongTxt.classList.add("txt_item");
     strongTxt.textContent = colaName;
     //콜라갯수
     const spanNum = document.createElement("span");
-    const colaNum =
-      item_staged_before.children[i].children[0].children[2].textContent;
+    const colaNum = item_staged_before.children[i].children[0].children[2].textContent;
     spanNum.classList.add("item_num");
     spanNum.textContent = colaNum;
 
@@ -190,9 +154,6 @@ DepoBtn.addEventListener("click", (e) => {
     alert("금액이 0원 이하입니다. 다시 입력해주세요");
   }
   inputDepo.value = ""; // 임금액 입력후 초기화
-
-  console.log(Number(price));
-  console.log(price_now);
   priceNow.textContent =
     (Number(price) + price_now).toLocaleString("ko-KR") + "원";
 });
